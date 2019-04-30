@@ -1,0 +1,133 @@
+<html>
+    <head>
+      <!-- <link href="css/style.css" rel="stylesheet" type="text/css">  -->
+      <!--  <link rel="stylesheet" type="text/css" href="/style.css"> -->
+      <script src="Scripts/jquery-3.1.1.min.js"></script>
+      <script src="Scripts/jquery.form.min.js"></script>
+    <script>
+        $(document).ready(function() {
+                    var options = {
+                            beforeSubmit: showRequest, 
+                            success: showResponse  }; 
+        $('#frmUploader').submit(function () { $(this).ajaxSubmit(options); 
+            return false; }); });
+             function showRequest(formData, jqForm, options) { alert('Uploading is starting.'); return true; } 
+             function showResponse(responseText, statusText, xhr, $form) { alert('status: ' + statusText + '\n\nresponseText: \n' + responseText ); }
+    </script>
+    </head>
+    <body> 
+        <script>
+          function showFileName( event ) {
+          var input = event.srcElement;
+          var fileName = input.files[0].name;
+          document.getElementById("pictext").value = fileName;
+          } 
+     </script>
+      
+          <form id="frmUploader" method="post" action="/addemp" enctype="multipart/form-data">
+            <div class="container">
+              <h1>Register</h1> 
+              <hr>
+              <label for="Name"><b>Name</b></label>
+              <input type="text" placeholder="First" name="name" value="test-name">
+              <input type="text" placeholder="Middle" name="middle" value="test-middle">
+              <input type="text" placeholder="Last" name="last" value="test-last">
+              
+              <br><br>
+              <label for="Bod"><b>Birthdate</b></label>
+                    <input type="date" name="bday" value="2012-3-23">
+              <br> <br>
+    
+              <label for="Bod"><b>Address</b></label>
+              <input type="text" placeholder="Enter Street Address" name="Address1" value="test-Address">
+              <input type="text" placeholder="ZipCode" name="ZipCode" value="123456">
+              <select id="city" name="city">
+                <option value="AHM">AHM</option>
+                <option value="MUM">MUM</option>
+                <option value="Del">Del</option>
+              </select>
+              <select id="Country" name="Country">
+                <option value="IND">IND</option>
+              </select>
+              <br> <br>
+              <label for="Bod"><b>Mobile Number</b></label><br>
+              <select id="mn" name="code">
+                <option value="+91">+91</option>
+              </select>
+              <input type="text" placeholder="Mobile Number" name="Mobile_Number" value="1234567890">
+               <br>
+              <label for="Gender"><b>Gender</b></label><br>
+              <input type="radio" name="gender" value="male" checked> Male
+              <input type="radio" name="gender" value="female"> Female
+              <input type="radio" name="gender" value="other"> Other
+              <br>               
+              <label for="Gender"><b>Hobby</b></label><br>
+              <input type="checkbox" name="Hobby"  value="Traveling" checked>Traveling
+              <input type="checkbox" name="Hobby"  value="Rading">Rading
+              <input type="checkbox" name="Hobby"  value="Gaming">Gaming 
+              <br>
+
+              <label for="email"><b>Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+              <input type="text" placeholder="Enter Email" name="email" value="test-email">
+              <br>
+              <label for="psw"><b>Password</b></label>
+              <input type="password" placeholder="Enter Password" name="psw" value="test-pass">
+              
+              <label for="psw-repeat"><b>Repeat Password</b></label>
+              <input type="password" placeholder="Repeat Password" name="repeat" value="test-pass">
+              <br>
+                <label for="files" class="btn">Select Profile image</label>
+                <input type="file" id="file-upload" name="picori" multiple required onchange="showFileName(event)"/>
+                <div id="file-upload-filename" name="picoth"></div>
+                <input type="text" id="pictext" name="pictext"> 
+                <br>
+                <label for="psw" name="Message"><b>Message</b></label>
+                <textarea rows="2" cols="50" name="message">Hello</textarea> 
+              <br>
+              <label for="Bod"><b>Roal</b></label>
+              <select id="roal" name="roal">
+                <option value="Employee">Employees</option>
+              </select>
+              <br>
+              <label for="Blood_Group"><b>Blood_Group</b></label>
+              <select id="roal" name="bg">
+                <option value="B+">B+</option>
+                <option value="A+">A+</option>
+                <option value="AB+">AB+</option>
+                <option value="O+">O+</option>
+              </select>
+              <br>
+              <label for="Bod"><b>Branch</b></label>
+              <select id="roal" name="Branch">
+                <option value="Sola">Sola - 380060,IND</option>
+                <option value="Charlotte NC">Charlotte NC - 28202, USA</option>
+              </select>
+              <br>
+              <label for="dOJ"><b>Date Of Join</b></label>
+              <input type="date" name="doj">
+              <br>
+            <label for="Multiple data"><b>List of Skills[can choose multiple => ctrl+click]</b></label><br>
+            <select data-placeholder="" multiple class="chosen-select" name="Interest" size="8">
+                <option  selected>Web Design</option>
+                <option>Backend Development</option>
+                <option>Deployment</option>
+                <option>Sales</option>
+                <option>Blog Writer</option>
+                <option>SEO</option>
+                <option>Degital Marketing</option>
+                <option>Ai/Ml</option>
+              </select>
+            <br><br>
+              <!-- <button type="submit" class="registerbtn">Register</button> -->
+              <input type="submit" name="submit" id="btnSubmit" value="Register" /> </form>
+              <button type="reset" class="resetbtn">Reset</button>
+            </div>
+          
+            <div class="container signin">
+              <p>Already have an account? <a href="login.ejs">login</a>.</p>
+            </div>
+          </form>  
+    </form>		
+   
+      </body>
+    </html>
